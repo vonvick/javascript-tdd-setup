@@ -153,10 +153,47 @@ describe('NotesApplication', function() {
     })
 
     it("returns a message that says Note not found", function() {
-      var note2 = noteapp.create(note);
+      noteapp.create(note);
       var deleted = noteapp.delete(3);
       assert.isString(deleted);
       assert.include(deleted, 'Could not find the file to delete', 'file not found');
+    });
+
+    it('returns a message that ask if iD is a string', function() {
+      noteapp.create(note);
+      var deleted = noteapp.delete("story");
+      assert.isString(deleted);
+    });
+  });
+
+  describe('editNote', function() {
+    beforeEach(function() {
+      note = new Note('I like andela', 'Victor');
+    });
+
+    it('returns a new value to be a string', function() {
+      noteapp.create(note);
+      var edited = noteapp.edit(1, "I want be a programmer");
+      assert.isString(edited);
+      assert(edited == 'I want be a programmer');
+    });
+
+    it('returns enter a number to edit', function() {
+      noteapp.create(note);
+      var edited = noteapp.edit("I want be a programmer");
+      assert(edited == 'Enter a number for the note ID');
+    });
+
+    it('returns could not find the file to edit', function() {
+      noteapp.create(note);
+      var edited = noteapp.edit(3,"I want be a programmer");
+      assert(edited == 'Could not find the file to edit');
+    });
+
+    it('returns you did not enter any note', function() {
+      noteapp.create(note);
+      var edited = noteapp.edit(1, '');
+      assert(edited == 'you did not enter any note');
     });
   });
 });

@@ -193,7 +193,7 @@ describe('NotesApplication', function() {
     it('returns you did not enter any note', function() {
       noteapp.create(note);
       var edited = noteapp.edit(1, '');
-      assert(edited == 'you did not enter any note');
+      assert(edited.length === 0);
     });
   });
 });

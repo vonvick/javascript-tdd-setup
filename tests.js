@@ -16,7 +16,8 @@ describe("Note creation works properly", function() {
 
 
   it("assigns author based on the parameter supplied in the constructor", function() {
-    assert(noteapp.author === "Victor");
+    noteapp;
+    assert.isDefined(noteapp.author);
   });
 
 });
@@ -38,7 +39,7 @@ describe("NoteApplication works properly", function() {
   it("return an empty list of notes", function() {
     var lists = noteapp.listNotes();
     assert.isString(lists, "No note in the list");
-    assert(lists === "No note in the list"):
+    assert(lists === "No note in the list");
   });
 
   it("increments the note list as notes are added", function() {

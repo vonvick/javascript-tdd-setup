@@ -133,5 +133,30 @@ describe('NotesApplication', function() {
       assert.isString(searchResult);
     });
 
-  })
+  });
+
+  describe('delete a note by ID', function() {
+
+    beforeEach(function() {
+      note = new Note('I like andela', 'Victor');
+    });
+
+    it("returns the length of note list to be 2", function() {
+      var note2 = new Note("I love andela", "Victor");
+      var note3 = new Note("I love football", "Victor");
+      noteapp.create(note);
+      noteapp.create(note2);
+      noteapp.create(note3);
+      var length = noteapp.notes.length;
+      var deleted = noteapp.delete(2);
+      assert(length -= 1)
+    })
+
+    it("returns a message that says Note not found", function() {
+      var note2 = noteapp.create(note);
+      var deleted = noteapp.delete(3);
+      assert.isString(deleted);
+      assert.include(deleted, 'Could not find the file to delete', 'file not found');
+    });
+  });
 });

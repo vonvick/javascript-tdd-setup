@@ -113,20 +113,25 @@ describe('NotesApplication', function() {
       assert(searchResult.length > 0);
     });
 
-    it ('should return a list of search result with search text in an array', function() {
-      noteapp.create(note);
+    it ('should return 2 for length of search result with search text in an array', function() {
       var note2 = new Note('I like football', 'Victor');
+      noteapp.create(note);
       noteapp.create(note2);
       var searchResult = noteapp.searchList("like");
-      assert(searchResult.length === 2);
+      assert.include(searchResult, '2', 'Found 2 results');
     });
 
-    it ('should return an array', function() {
+    it ('should return array length as 0', function() {
       noteapp.create(note);
       var searchResult = noteapp.searchList("want");
-      assert(searchResult.length === 0);
+      assert.include(searchResult, '0', 'Found no results');
     });
 
+    it ('should return a string', function() {
+      noteapp.create(note);
+      var searchResult = noteapp.searchList("");
+      assert.isString(searchResult);
+    });
 
   })
 });

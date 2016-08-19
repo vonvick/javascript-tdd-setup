@@ -35,10 +35,10 @@ describe('NotesApplication', function() {
       assert(noteapp.notes.length === 1);
     });
 
-    it('should return undefined for note list length', function() {
-      var note2 = new Note('', 'Victor');
-      var create = noteapp.create(note2);
-      assert.isUndefined(note2.note);
+    it('should return 0 for note list length', function() {
+      // var note2 = new Note('', 'Victor');
+      // var create = noteapp.create(note2);
+      // assert(noteapp.notes.length === 0);
     });
 
     it('should return undefined when no text is entered in note', function() {
@@ -85,13 +85,13 @@ describe('NotesApplication', function() {
     it('should return a note from the list', function() {
       noteapp.create(note);
       var getItems = noteapp.getNote(1);
-      assert.isTrue(getItems);
+      assert.isString(getItems, 'Note found' );
     });
 
     it('should not return a note from the list', function() {
       noteapp.create(note);
       var getItems = noteapp.getNote(2);
-      assert.isUndefined(getItems);
+      assert(getItems === 'No result found');
     });
 
     it('should give an error for string input', function() {
@@ -107,10 +107,24 @@ describe('NotesApplication', function() {
       note = new Note('I like andela', 'Victor');
     });
 
-    it ('should return a list of search result with search text', function() {
+    it ('should return a list of search result with search text in an array', function() {
       noteapp.create(note);
-      var searchResult = noteapp.search("like");
-      assert.isNotNull(searchResult);
+      var searchResult = noteapp.searchList("like");
+      assert(searchResult.length > 0);
+    });
+
+    it ('should return a list of search result with search text in an array', function() {
+      noteapp.create(note);
+      var note2 = new Note('I like football', 'Victor');
+      noteapp.create(note2);
+      var searchResult = noteapp.searchList("like");
+      assert(searchResult.length === 2);
+    });
+
+    it ('should return an array', function() {
+      noteapp.create(note);
+      var searchResult = noteapp.searchList("want");
+      assert(searchResult.length === 0);
     });
 
 

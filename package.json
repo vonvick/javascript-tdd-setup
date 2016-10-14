@@ -2,7 +2,7 @@
   "name": "javascript-tdd-setup",
   "version": "1.0.0",
   "description": "",
-  "main": "library.js",
+  "main": "sum_of_primes.js",
   "dependencies": {
     "chai": "^3.5.0"
   },

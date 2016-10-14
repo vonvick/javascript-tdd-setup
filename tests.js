@@ -12,11 +12,8 @@ describe("Test that returns the sum of prime numbers from 0 to the number", func
   it("should return 2 if number is equal to 2", function() {
     assert(lib.sumOfPrimes(2) == 2);
   });
-  it("should return 5 for number is equal to 10", function() {
+  it("should return 10 for number is equal to 5", function() {
     assert(lib.sumOfPrimes(5) == 10);
-  });
-  it("should return false when a string is supplied", function() {
-    assert(lib.sumOfPrimes('I am a boy') == false);
   });
   it("should return false when a string is supplied", function() {
     assert(lib.sumOfPrimes('I am a boy') == false);

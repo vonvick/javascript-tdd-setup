@@ -29,7 +29,7 @@ describe("Test that returns the sum of prime numbers from 0 to the number", func
   });
   it("should return an array if an array is supplied", function() {
     var arrayInput = [1,2,3,4,5];
-    assert.isArray(lib.sumOfPrimes(arrayInput));
+    assert(lib.sumOfPrimes(arrayInput) == false);
   });
 });
 

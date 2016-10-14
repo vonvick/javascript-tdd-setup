@@ -30,6 +30,10 @@ describe("Test that returns the sum of prime numbers from 0 to the number", func
   it("should return false when an empty string is supplied", function() {
     assert(lib.sumOfPrimes("") == false);
   });
+  it("should return an array if an array is supplied", function() {
+    var arrayInput = [1,2,3,4,5];
+    assert.isArray(lib.sumOfPrimes(arrayInput));
+  });
 });
 
 describe("Test that checks if a number is prime or not", function() {

@@ -50,3 +50,9 @@ describe("Test that checks if a number is prime or not", function() {
     assert(lib.isPrime(2) == true);
   });
 });
+
+describe("Test that checks the sum of a number", function() {
+  it("should return 10 when 4 and 6 are added together",  function() {
+    assert(lib.arraySum(4, 6) == 10);
+  });
+});
